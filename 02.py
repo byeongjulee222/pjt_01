@@ -7,7 +7,9 @@ import csv
 
 # 필요 정보 : movieCd, movieNm, movieNmEn, movieNmOg, watchGradeNm, openDt, showTm, genreNm, directors
 
-with open('boxoffice.csv', newline='', encoding='utf-8') as f:
+# 이전에 작성했던 boxoffice.csv 파일에서 'movieCD'열 값을 읽어온다.
+# (읽어오기 전에 값을 추가할 빈 리스트를 먼저 만든다.)
+with open('boxoffice.csv', newline='', encoding='utf-8') as f:  
     reader = csv.DictReader(f)      # 필드 네임을 작성하는 것이 아니기 때문에 f까지만 작성
     Cd_list = []
     # 한 줄씩 읽는다.
@@ -41,7 +43,7 @@ for i in Cd_list:
     # pprint(result)
 
 with open('movie.csv', 'w', encoding='utf-8', newline='') as f:
-    fieldnames = ('movieCd', 'movieNm', 'movieNmEn', 'movieNmOg', 'watchGradeNm', 'openDt', 'showTm', 'genreNm', 'peopleNmEn')
+    fieldnames = ('movieCd', 'movieNm', 'movieNmEn', 'movieNmOg', 'watchGradeNm', 'openDt', 'showTm', 'genreNm', 'directors')
     writer = csv.DictWriter(f, fieldnames=fieldnames)
     writer.writeheader()
     for value in result.values():
